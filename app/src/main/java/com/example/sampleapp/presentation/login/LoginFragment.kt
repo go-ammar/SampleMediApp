@@ -27,7 +27,7 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
 
-    private val viewModel: LoginViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         setUpViews()
 
-
+        binding.viewModel = loginViewModel
         return binding.root
     }
 
@@ -52,6 +52,7 @@ class LoginFragment : Fragment() {
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
+                    setDetailsText()
                     setLoginButton()
                 }
 
@@ -64,6 +65,7 @@ class LoginFragment : Fragment() {
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
+                    setDetailsText()
                     setLoginButton()
                 }
 
@@ -93,17 +95,24 @@ class LoginFragment : Fragment() {
                     (activity as SplashActivity).finish()
                 }
 
-
-
-//                val action =
-//                    LoginFragmentDirections.actionLoginFragmentToHomeFragment(binding.emailEt.text.toString())
-//
-//                findNavController().navigate(action)
             }
         }
     }
 
-    fun setLoginButton() {
+    private fun setDetailsText() {
+        binding.apply {
+            if (!loginViewModel.getEmailLength() && !loginViewModel.getPwdLength()) {
+                detailsTv.text =
+                    getString(R.string.length_of_password_and_username_must_be_greater_than_5)
+            } else if (!loginViewModel.getEmailLength() && loginViewModel.getPwdLength()) {
+                detailsTv.text = getString(R.string.length_of_password)
+            } else if (loginViewModel.getEmailLength() && !loginViewModel.getPwdLength()) {
+                detailsTv.text = getString(R.string.length_of_username)
+            }
+        }
+    }
+
+    private fun setLoginButton() {
         if (binding.emailEt.text.length > 5 && binding.passwordEt.text.length > 5) {
             binding.btnNext.isEnabled = true
             binding.detailsTv.visibility = View.INVISIBLE

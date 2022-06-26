@@ -40,7 +40,6 @@ import java.util.*
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private val args: HomeFragmentArgs by navArgs()
 
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var medicines: Medicines
@@ -201,7 +200,6 @@ class HomeFragment : Fragment() {
         adapter.submitList(medicines.problems)
 
     }
-
 
     private fun startTimer() {
 

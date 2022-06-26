@@ -24,8 +24,7 @@ class SplashActivity : AppCompatActivity() {
     @Inject
     lateinit var preferenceStorage: DataStorePrefsManager
 
-    lateinit var binding: ActivitySplashBinding
-    private var isLoggedIn = false
+    private lateinit var binding: ActivitySplashBinding
     private lateinit var navController: NavController
 
 
@@ -56,4 +55,5 @@ class SplashActivity : AppCompatActivity() {
     override fun onBackPressed() {
         finish()
     }
+
 }
