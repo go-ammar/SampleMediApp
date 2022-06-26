@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.sampleapp.presentation.login.LoginViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_primary_gradient"
+        android:paddingTop="@dimen/margin_normal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/phoneNumberContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:background="@drawable/top_rounded_white_card"
+            android:padding="@dimen/margin_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginTop="@dimen/margin_extra_large"
+                android:background="@color/colorOnPrimary"
+                android:src="@drawable/ic_hands"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_welcome"
+                style="@style/TextViewHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:background="@color/colorOnPrimary"
+                android:gravity="center"
+                android:text="@string/welcome_to_medi_app"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+
+
+            <EditText
+                android:id="@+id/emailEt"
+                style="@style/TextViewPrimaryBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_margin_start"
+                android:background="@drawable/grey_rounded_bg_shape"
+                android:backgroundTint="@color/greyNormal"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:maxLength="32"
+                android:padding="@dimen/margin_normal"
+                android:singleLine="true"
+                android:text="@={viewModel.email}"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_welcome" />
+
+            <EditText
+                android:id="@+id/passwordEt"
+                style="@style/TextViewPrimaryBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_margin_start"
+                android:background="@drawable/grey_rounded_bg_shape"
+                android:backgroundTint="@color/greyNormal"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:maxLength="12"
+                android:padding="@dimen/margin_normal"
+                android:singleLine="true"
+                android:text="@={viewModel.pwd}"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emailEt" />
+
+            <ImageView
+                android:id="@+id/passwordToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:src="@drawable/ic_toggle_false"
+                app:layout_constraintBottom_toBottomOf="@id/passwordEt"
+                app:layout_constraintEnd_toEndOf="@id/passwordEt"
+                app:layout_constraintTop_toTopOf="@id/passwordEt" />
+
+            <TextView
+                android:id="@+id/detailsTv"
+                style="@style/TextViewMediumHeadingPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/margin_medium"
+                android:paddingTop="@dimen/margin_normal"
+                android:text="@string/length_of_password_and_username_must_be_greater_than_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/passwordEt" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_next"
+                style="@style/ButtonPrimaryText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_margin_start"
+                android:alpha="0.4"
+                android:background="@drawable/button_gradient"
+                android:clickable="false"
+                android:enabled="false"
+                android:fontFamily="@font/hurmesemibold"
+                android:gravity="center"
+                android:paddingVertical="@dimen/margin_normal"
+                android:text="@string/login"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailsTv" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
